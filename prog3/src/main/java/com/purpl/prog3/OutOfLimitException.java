@@ -9,7 +9,10 @@ package com.purpl.prog3;
  * @author izada
  */
 public class OutOfLimitException extends Exception {
-    public OutOfLimitException(String message){
+    private double number;
+    public double getNumber(){return number;}
+    public OutOfLimitException(String message, double num){
         super(message);
+        number = num;
     }
 }

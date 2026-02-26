@@ -12,10 +12,23 @@ public final class Integration {
         private double h;
         private Double result;
 
-        public ResIntegral(double a, double b, double h) throws OutOfLimitException {
-            if(a < MIN || b > MAX) {
-                throw new OutOfLimitException("Неверные значения a и b - числа должно быть в диапазоне: 0,000001-1000000");
+        public ResIntegral(double a, double b, double h) throws OutOfLimitException, ReversedSection, StepGreaterThenDiapason {
+            if(a < MIN) {
+                throw new OutOfLimitException("Неверное значение а число должно быть в диапазоне: 0,000001-1000000. а = ", a);
             }
+            
+            if(b > MAX) {
+                throw new OutOfLimitException("Неверное значение b - числа должно быть в диапазоне: 0,000001-1000000. b = ", b);
+            }
+            
+            if(a > b) {
+                throw new ReversedSection("Нижняя граница a должна быть меньше верхней b");
+            }
+            
+            if(h >(b-a)) {
+                throw new StepGreaterThenDiapason("Шаг должен быть меньше диапозна интегрирования.");
+            }
+
             
             this.a = a;
             this.b = b;

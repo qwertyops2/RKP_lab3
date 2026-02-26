@@ -237,7 +237,7 @@ public class JFrameGUI extends javax.swing.JFrame {
 
         } catch (OutOfLimitException ex) {
             JOptionPane.showMessageDialog(this,
-                    ex.getMessage(),
+                    ex.getMessage() + ex.getNumber(),
                     "Ошибка", JOptionPane.WARNING_MESSAGE);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this,
